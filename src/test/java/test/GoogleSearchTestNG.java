@@ -13,21 +13,32 @@ import page.GoogleSearchPageObject;
 
 public class GoogleSearchTestNG {
     private static WebDriver driver = null;
+
     @BeforeTest
     public void setUpTest(){
         System.setProperty("webdriver.gecko.driver","/Users/macintoshhd/IdeaProjects/SeleniumGoogle/geckodriver");
-        WebDriver driver = new FirefoxDriver();
+        driver = new FirefoxDriver();
 
     }
     @Test
     public void test(){
-        WebDriverWait buttonSearch = new WebDriverWait(driver, 20);
-        driver.get("https://google.com");
-        GoogleSearchPageObject object = new GoogleSearchPageObject(driver);
-        object.setTextBoxInSearch("Automation Step by Step");
+        WebDriverWait waitButtonSearch = new WebDriverWait(driver, 20);
 
-        buttonSearch.until(ExpectedConditions.visibilityOfElementLocated(By.name("btnK"))).click();
+        // goto google.com
+        driver.get("https://google.com");
+
+        // enter text in search textbox
+        driver.findElement(By.name("q")).sendKeys("Automation Step By Step");
+
+        // click on search button
+        // driver.findElement(By.name("btnK")).click();
+
+        WebElement buttonSearch = waitButtonSearch
+                .until(ExpectedConditions.visibilityOfElementLocated(By.name("btnK")));
+
+        buttonSearch.click();
     }
+
     @AfterTest
     public void tearDownTest(){
         driver.close();
