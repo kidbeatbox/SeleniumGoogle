@@ -31,7 +31,7 @@ public class GoogleSearchTestNG {
         driver.findElement(By.name("q")).sendKeys("Automation Step By Step");
 
         // click on search button
-        // driver.findElement(By.name("btnK")).click();
+//         driver.findElement(By.name("btnK")).click();
 
         WebElement buttonSearch = waitButtonSearch
                 .until(ExpectedConditions.visibilityOfElementLocated(By.name("btnK")));
