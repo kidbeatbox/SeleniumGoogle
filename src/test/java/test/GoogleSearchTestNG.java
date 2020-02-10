@@ -41,7 +41,7 @@ public class GoogleSearchTestNG {
 
     @AfterTest
     public void tearDownTest(){
-        driver.close();
+        driver.quit();
         System.out.println("Done");
     }
 
